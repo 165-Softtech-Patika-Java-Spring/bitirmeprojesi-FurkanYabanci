@@ -47,10 +47,9 @@ public class ProductService {
         return productDtoList;
     }
 
-   /* public List<Product> findProductDetailsByProductType(){
-        List<Product> products = productRepository.f();
-        return products;
-    }*/
+    public List<?> findProductDetails(){
+        return productRepository.findProductDetails();
+    }
 
     public ProductDto save(ProductSaveRequestDto productSaveRequestDto){
         Product product = ProductMapper.INSTANCE.convertToProduct(productSaveRequestDto);

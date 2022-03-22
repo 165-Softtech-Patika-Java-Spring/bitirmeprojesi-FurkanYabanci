@@ -1,5 +1,6 @@
 package com.softtech.market.controller;
 
+import com.softtech.market.dto.GeneralResponseDto;
 import com.softtech.market.dto.UserDto;
 import com.softtech.market.dto.request.UserSaveRequestDto;
 import com.softtech.market.service.AuthenticationService;
@@ -21,12 +22,12 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody SecurityLoginRequestDto securityLoginRequestDto){
         String token = authenticationService.login(securityLoginRequestDto);
-        return ResponseEntity.ok(token);
+        return ResponseEntity.ok(GeneralResponseDto.of(token));
     }
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody UserSaveRequestDto userSaveRequestDto){
         UserDto userDto = authenticationService.register(userSaveRequestDto);
-        return ResponseEntity.ok(userDto);
+        return ResponseEntity.ok(GeneralResponseDto.of(userDto));
     }
 }

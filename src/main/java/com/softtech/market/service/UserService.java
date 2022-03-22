@@ -6,17 +6,12 @@ import com.softtech.market.dto.request.UserSaveRequestDto;
 import com.softtech.market.dto.request.UserUpdateRequestDto;
 import com.softtech.market.enums.UserErrorMessage;
 import com.softtech.market.exception.ItemNotFoundException;
-import com.softtech.market.model.BaseAdditionalFields;
-import com.softtech.market.model.Product;
 import com.softtech.market.model.User;
 import com.softtech.market.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,14 +20,12 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final BaseService<User> baseService;
 
     public UserDto save(UserSaveRequestDto userSaveRequestDto){
         checkUser(userSaveRequestDto);
         User user = UserMapper.INSTANCE.convertToUser(userSaveRequestDto);
         String password = passwordEncoder.encode(user.getPassword());
         user.setPassword(password);
-        baseService.addBaseAdditionalFields(user);
         user = userRepository.save(user);
         UserDto userDto = UserMapper.INSTANCE.convertToUserDto(user);
         return userDto;
@@ -44,7 +37,6 @@ public class UserService {
         user.setPassword(userUpdateRequestDto.getPassword());
         user.setFirstName(userUpdateRequestDto.getFirstName());
         user.setLastName(userUpdateRequestDto.getLastName());
-        baseService.addBaseAdditionalFields(user);
         user = userRepository.save(user);
         UserDto userDto = UserMapper.INSTANCE.convertToUserDto(user);
         return userDto;

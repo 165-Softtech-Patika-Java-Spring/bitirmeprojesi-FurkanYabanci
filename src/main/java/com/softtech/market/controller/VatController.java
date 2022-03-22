@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/vat")
+@RequestMapping("/api/v1/vats")
 public class VatController {
 
     private final VatService vatService;

@@ -1,9 +1,7 @@
 package com.softtech.market.config;
 
-import com.softtech.market.model.User;
 import com.softtech.market.security.JwtAuthenticationEntryPoint;
 import com.softtech.market.security.JwtAuthenticationFilter;
-import com.softtech.market.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

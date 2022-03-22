@@ -2,8 +2,7 @@ package com.softtech.market.enums;
 
 public enum VatErrorMessage implements BaseErrorMessage{
 
-    VAT_NOT_FOUND("Vat not found!"),
-    PRODUCT_TYPE_NOT_FOUND("Product type not found!");
+    VAT_NOT_FOUND("Vat not found!"),;
 
     private String message;
     VatErrorMessage(String message) {

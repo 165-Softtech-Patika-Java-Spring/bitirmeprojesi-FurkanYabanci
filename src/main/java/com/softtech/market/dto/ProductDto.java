@@ -1,7 +1,5 @@
 package com.softtech.market.dto;
 
-import com.softtech.market.model.Vat;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

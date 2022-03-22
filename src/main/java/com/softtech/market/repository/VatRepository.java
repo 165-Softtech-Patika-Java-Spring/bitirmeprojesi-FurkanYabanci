@@ -10,6 +10,4 @@ import java.util.Optional;
 
 @Repository
 public interface VatRepository extends JpaRepository<Vat, Long> {
-
-    Optional<BigDecimal> findRateByProductType(ProductType type);
 }

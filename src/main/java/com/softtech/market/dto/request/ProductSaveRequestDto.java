@@ -1,15 +1,10 @@
 package com.softtech.market.dto.request;
 
-import com.softtech.market.dto.VatDto;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
-@NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class ProductSaveRequestDto {
 
     private String name;

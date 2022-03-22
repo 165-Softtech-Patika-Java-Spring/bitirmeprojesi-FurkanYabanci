@@ -7,7 +7,6 @@ import com.softtech.market.dto.request.VatUpdateRequestDto;
 import com.softtech.market.enums.VatErrorMessage;
 import com.softtech.market.exception.ItemNotFoundException;
 import com.softtech.market.model.Product;
-import com.softtech.market.model.ProductType;
 import com.softtech.market.model.Vat;
 import com.softtech.market.repository.VatRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -64,11 +62,5 @@ public class VatService {
         Vat vat = vatRepository.findById(id)
                 .orElseThrow(() -> new ItemNotFoundException(VatErrorMessage.VAT_NOT_FOUND));
         return vat;
-    }
-
-    protected BigDecimal findRateByProductType(ProductType productType){
-        BigDecimal vatRate = vatRepository.findRateByProductType(productType)
-                .orElseThrow(() -> new ItemNotFoundException(VatErrorMessage.PRODUCT_TYPE_NOT_FOUND));
-        return vatRate;
     }
 }

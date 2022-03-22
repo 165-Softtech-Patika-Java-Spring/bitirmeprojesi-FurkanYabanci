@@ -38,11 +38,10 @@ public class ProductController {
         return ResponseEntity.ok(GeneralResponseDto.of(productDtoList));
     }
 
-   /* @GetMapping("/productDetails")
-    public ResponseEntity findProductDetailsByProductType(){
-        List<Product> productDtoList = productService.findProductDetailsByProductType();
-        return ResponseEntity.ok(GenericResponseDto.of(productDtoList));
-    }*/
+    @GetMapping("/productDetails")
+    public ResponseEntity findProductDetails(){
+        return ResponseEntity.ok(GeneralResponseDto.of(productService.findProductDetails()));
+    }
 
     @PostMapping
     public ResponseEntity save(@RequestBody ProductSaveRequestDto productSaveRequestDto) {
