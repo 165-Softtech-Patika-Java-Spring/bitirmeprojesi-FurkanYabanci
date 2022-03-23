@@ -59,8 +59,8 @@ public class UserService {
 
     private void checkUser(UserSaveRequestDto userSaveRequestDto){
         List<User> userList = userRepository.findAll();
-        for (User u:userList) {
-            if (u.getUsername().equals(userSaveRequestDto.getUsername())){
+        for (User user:userList) {
+            if (user.getUsername().equals(userSaveRequestDto.getUsername())){
                 throw new ItemNotFoundException(UserErrorMessage.USERNAME_ALREADY_EXİSTS);
             }
         }
