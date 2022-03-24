@@ -34,14 +34,12 @@ public class GeneralResponseDto<T> implements Serializable {
     public static <T> GeneralResponseDto<T> of(T t){
         return new GeneralResponseDto<>(t, true);
     }
-
     public static <T> GeneralResponseDto<T> of(String message){
         return new GeneralResponseDto<>(null, true, message);
     }
     public static <T> GeneralResponseDto<T> error(T t){
         return new GeneralResponseDto<>(t, false);
     }
-
 
     public void setMessage(String message) {
         this.message = message;

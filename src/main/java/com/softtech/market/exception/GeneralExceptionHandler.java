@@ -1,8 +1,10 @@
 package com.softtech.market.exception;
 
 import com.softtech.market.dto.GeneralResponseDto;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,4 +41,18 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(generalResponse, HttpStatus.NOT_FOUND);
     }
+
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+
+        Date errorDate = new Date();
+        String message = "Validation failed!";
+        String description = ex.getBindingResult().toString();
+
+        GeneralExceptionResponse generalExceptionResponse = new GeneralExceptionResponse(errorDate, message, description);
+        GeneralResponseDto<GeneralExceptionResponse> generalResponse = GeneralResponseDto.error(generalExceptionResponse);
+        generalResponse.setMessage(message);
+        return new ResponseEntity<>(generalResponse, HttpStatus.BAD_REQUEST);
+    }
+
 }

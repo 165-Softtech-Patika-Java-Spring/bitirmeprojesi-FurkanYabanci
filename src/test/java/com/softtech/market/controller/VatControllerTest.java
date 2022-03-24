@@ -80,7 +80,7 @@ class VatControllerTest extends BaseControllerTest{
         String content = objectMapper.writeValueAsString(vatUpdateRequestDto);
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-                .post(BASE_PATH)
+                .patch(BASE_PATH)
                 .content(content)
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();

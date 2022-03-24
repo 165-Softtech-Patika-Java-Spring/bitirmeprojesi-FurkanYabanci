@@ -73,16 +73,16 @@ class UserControllerTest extends BaseControllerTest{
         userRepository.save(user);
 
         UserUpdateRequestDto userUpdateRequestDto = new UserUpdateRequestDto();
-        user.setId(1l);
-        userUpdateRequestDto.setUsername("Johnny");
-        userUpdateRequestDto.setFirstName("Joe");
+        userUpdateRequestDto.setId(1l);
+        userUpdateRequestDto.setUsername("Joe");
+        userUpdateRequestDto.setFirstName("Jonny");
         userUpdateRequestDto.setLastName("Cena");
         userUpdateRequestDto.setPassword("12345678");
 
         String content = objectMapper.writeValueAsString(userUpdateRequestDto);
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-                .post(BASE_PATH)
+                .put(BASE_PATH)
                 .content(content)
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
