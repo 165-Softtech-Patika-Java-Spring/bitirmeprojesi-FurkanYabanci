@@ -86,7 +86,7 @@ class ProductServiceTest {
     }
 
     @Test
-    void findAllByTaxIncludedPriceBetween() {
+    void shouldFindAllByTaxIncludedPriceBetween() {
         BigDecimal startPrice = BigDecimal.valueOf(1);
         BigDecimal endPrice = BigDecimal.valueOf(2);
 
@@ -104,7 +104,7 @@ class ProductServiceTest {
     }
 
     @Test
-    void findProductDetails() {
+    void shouldFindProductDetails() {
         ProductDetailsDto productDetailsDto = Mockito.mock(ProductDetailsDto.class);
         List<ProductDetailsDto> productDetailsDtoList = new ArrayList<>();
         productDetailsDtoList.add(productDetailsDto);
@@ -216,7 +216,7 @@ class ProductServiceTest {
     }
 
     @Test
-    void findAllByVatId() {
+    void shouldFindAllByVatId() {
 
         Product product = mock(Product.class);
 
@@ -232,7 +232,7 @@ class ProductServiceTest {
     }
 
     @Test
-    void updateVatRateAndTaxIncludedPrice() {
+    void shouldUpdateVatRateAndTaxIncludedPrice() {
         VatUpdateRequestDto vatUpdateRequestDto = mock(VatUpdateRequestDto.class);
         Product product = mock(Product.class);
         Vat vat = mock(Vat.class);
